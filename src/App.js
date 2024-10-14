@@ -1,25 +1,21 @@
 // src/App.js
 import React from 'react';
-import './App.css';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Intro from './sections/Intro';
+import Header from './components/Header'; // Mantenha o Header no topo
+import Intro from './sections/Intro'; // Importe cada seção diretamente
 import ColorTheory from './sections/ColorTheory';
 import Application from './sections/Application';
 import Results from './sections/Results';
+import Footer from './components/Footer';
+import './App.css'; // Certifique-se de que o CSS está importado
 
 function App() {
-  const scrollToSection = (id) => {
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <div className="App">
-      <Header scrollToSection={scrollToSection} />
+      <Header />
       <Intro />
       <ColorTheory />
       <Application />
-      <Results />
+      {/* <Results /> */}
       <Footer />
     </div>
   );

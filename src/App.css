@@ -6,18 +6,20 @@
   /* Azul */
   --secondary-color: #57bea0;
   /* Verde */
-  --accent-color: #de1971;
-  /* Vermelho */
+  --third-color: #7fc8a9;
   --background-color: #f9f9f9;
   /* Fundo claro */
+  --bakground-color-1: #f6f6f6;
   --background-color-2: #d3d3d3;
   /* Fundo cinza */
   --text-color: #333;
   /* Texto padrão */
   --white: #fff;
-  /* Cor dos textos clicáveis */
-  --footer: #06223a;
-  /* Footer */
+  --dark-blue: #06223a;
+  --red: #de1919;
+  --yellow: #fbc02d;
+  --purple: #730b57;
+  --pink: #de1971;
 }
 
 .App-header,
@@ -29,7 +31,7 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: var(--background-color);
+  background-color: var(--background-color-1);
 }
 
 /* HEADER */
@@ -50,6 +52,7 @@ body {
   background: none;
   border: none;
   color: var(--text-color);
+  font-weight: 400;
   margin: 0 10px;
   cursor: pointer;
   font-size: 16px;
@@ -58,8 +61,9 @@ body {
 
 .App-header nav button:hover {
   transform: scale(1.02);
-  text-shadow: 1px 5px 10px var(--white);
-  text-decoration: underline;
+  /* text-shadow: 1px 5px 10px var(--white); */
+  font-weight: 600;
+  color: var(--primary-color);
 }
 
 .App-header nav button:not(:last-child) {
@@ -78,9 +82,38 @@ body {
 }
 
 /* INTRO */
+.blob {
+  width: 800px;
+    height: 1000px;
+    background-color: var(--dark-blue);
+    border-radius: 50%;
+    animation: blob 20s infinite;
+    position: absolute;
+    top: -20px;
+    right: -152px;
+    z-index: -2;
+    max-width: 700px;
+}
+
+@keyframes blob {
+
+  0%,
+  100% {
+    border-radius: 42% 58% 70% 30% / 30% 40% 60% 70%;
+  }
+
+  50% {
+    border-radius: 50% 50% 30% 70% / 40% 30% 70% 60%;
+  }
+}
+
 .intro-container {
   max-width: 1200px;
   margin: 0 auto;
+}
+
+#intro {
+  height: 690px;
 }
 
 .intro-title {
@@ -130,22 +163,11 @@ body {
   color: var(--text-color);
 }
 
-.image-intro {
-  display: flex;
+img.image-design {
   position: relative;
-  left: 970px;
-  bottom: 299px;
-}
-
-img.introImage {
-  height: 550px;
-}
-
-img.introImage2 {
-  height: 200px;
-  position: relative;
-  left: 297px;
-  bottom: -180px;
+  left: 1044px;
+  bottom: 445px;
+  height: 450px;
 }
 
 .saiba-mais {
@@ -159,22 +181,36 @@ img.introImage2 {
   font-weight: bolder;
   font-size: 1.4rem;
 }
-/* 
-.saiba-mais-section {
-  display: flex;
-  justify-content: center;
-} */
+
+img.lupa {
+  height: 33px;
+  position: relative;
+  top: -66px;
+  left: 235px;
+}
 
 /* COLOR THEORY */
 #color-theory {
-  background-color: var(--white);
+  background: linear-gradient(to right, var(--white) 18%, var(--background-color) 30%, var(--background-color-2) 55%, var(--white));
 }
 
-img.colorImage {
+/* img.colorImage {
   height: 577px;
   position: relative;
   left: 1222px;
-  bottom: 890px;
+  bottom: 436px;
+} */
+
+img.colorImage {
+  height: 497px;
+  position: relative;
+  left: -732px;
+  bottom: 436px;
+  transform: scaleX(-1);
+}
+
+#color-theory {
+  height: 500px !important;
 }
 
 .color-theory-container {
@@ -238,31 +274,27 @@ img.colorImage {
 
 .blue .color-circle {
   background-color: var(--primary-color);
-  /* Azul */
 }
 
 .green .color-circle {
   background-color: var(--secondary-color);
-  /* Verde */
 }
 
 .red .color-circle {
-  background-color: #de1919;
-  /* Vermelho */
+  background-color: var(--red);
 }
 
 .yellow .color-circle {
-  background-color: #fbc02d;
-  /* Amarelo */
+  background-color: var(--yellow);
 }
 
 /* APPLICATION */
 #application {
-  background-color: var(--primary-color);
+  background-color: var(--dark-blue);
 }
 
 .application-container {
-  max-width: 1220px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -270,11 +302,13 @@ img.colorImage {
   font-size: 2.5rem;
   color: var(--white);
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .application-subtitle {
   font-size: 1.2rem;
   color: var(--white);
+  text-align: center;
   margin-bottom: 40px;
 }
 
@@ -283,10 +317,11 @@ img.colorImage {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 20px;
   gap: 20px;
 }
 
-.application-example {
+/* .application-example {
   width: 300px;
   padding: 20px;
   border-radius: 8px;
@@ -296,7 +331,7 @@ img.colorImage {
   transition: transform 0.2s, box-shadow 0.2s;
   height: 300px;
 }
-
+  
 .application-example:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -305,11 +340,17 @@ img.colorImage {
 .application-example h2 {
   font-size: 1.5rem;
   margin-bottom: 10px;
-}
+} 
 
 .application-example p {
   font-size: 1rem;
   color: var(--text-color);
+} */
+img.ux-ui {
+  position: relative;
+  left: 1550px;
+  bottom: 210px;
+  height: 331px;
 }
 
 .color-sample {
@@ -320,32 +361,29 @@ img.colorImage {
 
 .blue-sample {
   background-color: var(--primary-color);
-  /* Azul */
   color: var(--white);
 }
 
 .green-sample {
   background-color: var(--secondary-color);
-  /* Verde */
   color: var(--white);
 }
 
 .red-sample {
-  background-color: #de1919;
-  /* Vermelho */
+  background-color: var(--red);
   color: var(--white);
 }
 
 .yellow-sample {
-  background-color: #fbc02d;
-  /* Amarelo */
+  background-color: var(--yellow);
   color: var(--text-color);
 }
 
-
 /* RESULTS */
 #results {
-  background-color: var(--secondary-color);
+  /* background-color: var(--third-color); */
+  background: radial-gradient(circle, rgba(87, 190, 160, 1) -45%, rgba(249, 249, 249, 1) 98%, rgba(211, 211, 211, 1) 100%);
+  height: 700px;
 }
 
 .results-container {
@@ -355,17 +393,19 @@ img.colorImage {
 
 .results-title {
   font-size: 2.5rem;
-  color: var(--primary-color);
+  color: var(--dark-blue);
+  text-align: center;
   margin-bottom: 20px;
 }
 
 .results-subtitle {
   font-size: 1.2rem;
+  text-align: center;
   color: var(--text-color);
   margin-bottom: 40px;
 }
 
-.results-grid {
+/* .results-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -390,7 +430,7 @@ img.colorImage {
 .result-card h2 {
   font-size: 3rem;
   margin-bottom: 10px;
-  color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 .result-card p {
@@ -413,6 +453,42 @@ img.colorImage {
 .results-button:hover {
   background-color: var(--secondary-color);
   transform: scale(1.05);
+}*/
+
+.results-grid p {
+  color: var(--text-color);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.quer-saber-mais {
+  font-size: 1.1rem;
+  text-align: center;
+  color: var(--dark-blue);
+  font-weight: bold;
+  padding: 5px 5px;
+  margin: 50px auto 0 auto;
+}
+
+.inscrever {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+  color: var(--white);
+  background-color: var(--dark-blue);
+  border: 1px solid var(--dark-blue);
+  border-radius: 4px;
+  padding: 5px 5px;
+  width: 250px;
+  height: 35px;
+  margin: 15px auto 0 auto;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.inscrever:hover {
+  transform: scale(1.01);
 }
 
 /* GERAIS */
@@ -420,12 +496,127 @@ img.colorImage {
   height: 1000px;
   padding: 60px 20px;
   margin: 1px 0;
-  background-color: var(--white);
+  background-color: var(--background-color-1);
 }
 
 .App-footer {
-  background-color: var(--footer);
+  background-color: var(--background-color);
   padding: 10px;
-  color: var(--white);
+  color: var(--text-color);
   text-align: center;
+  border-top: 4px solid var(--secondary-color);
+  height: 45px;
+}
+
+/* VIRAR CARD */
+.flip-card {
+  width: 300px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: var(--white);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 300px;
+  cursor: pointer;
+}
+
+.flip-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: var(--white);
+  color: black;
+}
+
+.flip-card-back {
+  background-color: var(--white);
+  color: var(--text-color);
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-back {
+  padding: 20px;
+  text-align: center;
+}
+
+.button-examples {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.button-example {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.correct-button {
+  background-color: var(--secondary-color);
+  color: var(--white);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 20px;
+}
+
+.incorrect-button {
+  background-color: var(--red);
+  color: var(--white);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: not-allowed;
+  line-height: 20px;
+  font-size: 1rem;
+}
+
+.correct-button:hover {
+  background-color: var(--secondary-color);
+}
+
+.incorrect-button:hover {
+  background-color: var(--red);
+}
+
+.mensagem-cuidado {
+  color: var(--red);
+  font-weight: 600;
+  padding: 10px 10px;
+}
+
+.mensagem-alerta {
+  color: var(--yellow);
+  font-weight: 600;
+  padding: 10px 10px;
 }
